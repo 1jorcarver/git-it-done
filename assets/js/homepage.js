@@ -93,12 +93,12 @@ var displayRepos = function(repos, searchTerm) {
 };
 
 var getFeaturedRepos = function(language) {
-  var apiUrl = "https://api.github.com/serch/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
+  var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
 
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
       response.json().then(function(data) {
-        dispalyRepos(data.items, language);
+        displayRepos(data.items, language);
       });
     } else {
         alert("Error: " + response.statusText);
